@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from app.ai.client import call_claude
+from app.ai.client import call_llm
 from app.ai.knowledge_base import get_kb_context
 from app.ai.prompts import DRAFT_SYSTEM
 from app.core.config import settings
@@ -32,6 +32,6 @@ def generate_draft(db: Session, ticket: Ticket) -> str:
         # Only the KB sections relevant to this category
         {"type": "text", "text": f"<policy>\n{get_kb_context(category)}\n</policy>"},
     ]
-    return call_claude(
+    return call_llm(
         db, task="draft", ticket_id=ticket.id, system=system, user_text=user_text, max_tokens=500
     ).strip()

@@ -3,7 +3,7 @@ import re
 
 from sqlalchemy.orm import Session
 
-from app.ai.client import AIUnavailable, call_claude
+from app.ai.client import AIUnavailable, call_llm
 from app.ai.fallback import rule_classify
 from app.ai.prompts import CLASSIFIER_SYSTEM
 from app.core.config import settings
@@ -28,7 +28,7 @@ def classify(db: Session, ticket: Ticket) -> dict:
     user_text = f"<ticket>\nSubject: {ticket.subject}\n{ticket.description[:limit]}\n</ticket>"
     system = [{"type": "text", "text": CLASSIFIER_SYSTEM, "cache_control": {"type": "ephemeral"}}]
     try:
-        text = call_claude(
+        text = call_llm(
             db, task="classify", ticket_id=ticket.id, system=system, user_text=user_text, max_tokens=80
         )
         return {**_parse(text), "source": "ai"}

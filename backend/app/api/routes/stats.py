@@ -11,7 +11,7 @@ from app.models.user import User
 router = APIRouter(prefix="/api/admin/stats", tags=["Admin: Stats"])
 
 # Approx Claude Haiku price per 1M tokens (USD). Update if pricing changes.
-PRICE_IN, PRICE_OUT = 1.0, 5.0
+PRICE_IN, PRICE_OUT = 0.0, 0.0
 
 
 @router.get("")
