@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     jwt_expire_minutes: int = 480
 
     gemini_api_key: str = ""
-    ai_model: str = "gemini-2.5-flash"
+    ai_model: str = "gemini-3.8-flash"
     ai_timeout_seconds: float = 15.0
     max_ticket_chars_for_ai: int = 2000  # cost control: cut very long tickets
 
