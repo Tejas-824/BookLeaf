@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     gemini_api_key: str = ""
     ai_model: str = "gemini-3.8-flash"
     ai_timeout_seconds: float = 15.0
-    max_ticket_chars_for_ai: int = 2000  # cost control: cut very long tickets
+    max_ticket_chars_for_ai: int = 2000  # cost control, cut very long tickets
 
     cors_origins: str = "http://localhost:3000"
     max_tickets_per_hour: int = 10  # per author
