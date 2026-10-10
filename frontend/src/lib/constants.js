@@ -1,3 +1,4 @@
+// These lists must match backend/app/core/constants.py. If you change one, change the other.
 export const CATEGORIES = [
   "Royalty & Payments",
   "ISBN & Metadata Issues",
