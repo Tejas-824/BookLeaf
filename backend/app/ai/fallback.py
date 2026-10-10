@@ -1,7 +1,7 @@
 from app.core.constants import CATEGORIES
 
 KEYWORDS = {
-    "Royalty & Payments": ["royalty", "royalties", "payment", "payout", "paid", "bank", "earning"],
+    "Royalty & Payments": ["royalty", "royalties", "payment", "payout", "paid", "bank", "earning", "refund", "overdue"],
     "ISBN & Metadata Issues": ["isbn", "metadata", "wrong book", "duplicate", "description", "title on"],
     "Printing & Quality": ["print", "quality", "blurry", "misprint", "binding", "damaged", "defect", "reprint"],
     "Distribution & Availability": ["amazon", "flipkart", "unavailable", "not available", "listing", "stock"],
