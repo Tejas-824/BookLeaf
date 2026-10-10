@@ -66,6 +66,10 @@ async def unhandled_handler(_: Request, exc: Exception):
 def health():
     return {"status": "ok"}
 
+@app.get("/", tags=["System"])
+def root():
+    return {"service": "BookLeaf API", "docs": "/docs"}
+
 
 for r in (auth.router, books.router, tickets.router, admin_tickets.router, stats.router):
     app.include_router(r)
