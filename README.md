@@ -114,3 +114,12 @@ Errors always look the same: `{ "error": { "code": "...", "message": "..." } }`
 - **Database tables are made automatically:** a real deployment would use migrations (Alembic).
 - **Login token is kept in the browser's local storage:** production should use secure cookies.
 - **Polling:** fine for now. Server-Sent Events would be the next step for more users.
+
+## Problems I faced and how I fixed them
+
+**1. Claude to Gemini**
+I first built the AI part with Claude Haiku, but it needs paid API credits and I wanted the project to run for free. I moved to Google Gemini's free tier.
+
+**2. First AI draft timed out (504)**
+On the deployed app, the first draft failed with `504 DEADLINE_EXCEEDED`. The reason was the 15 second timeout combined with the free server waking up from sleep and the free Gemini tier being slow. Clicking "Regenerate AI draft" worked right away. We can increase the timeout (`AI_TIMEOUT_SECONDS`).
+
