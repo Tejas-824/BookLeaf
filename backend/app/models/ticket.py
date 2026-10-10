@@ -35,6 +35,7 @@ class Ticket(Base):
     ai_draft: Mapped[str | None] = mapped_column(Text)  # cached draft
     ai_draft_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
+   # --- Assignment and duplicate protection ---
     assigned_to: Mapped[int | None] = mapped_column(ForeignKey("users.id"), nullable=True)
     idempotency_key: Mapped[str | None] = mapped_column(String(64), unique=True)  # stops double submit
 
