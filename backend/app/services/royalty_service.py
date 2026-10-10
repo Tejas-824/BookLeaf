@@ -6,7 +6,8 @@ from app.models.book import Book
 
 
 def next_payout_date(today: date | None = None) -> date:
-    """Payout is due 45 days after a quarter ends. Return the next such date."""
+    """Royalties are paid 45 days after each quarter ends (Mar 31, Jun 30, Sep 30, Dec 31).
+    Returns the next such payout date on or after today. Done in code so the AI never does date maths."""
     today = today or date.today()
     for year in (today.year - 1, today.year, today.year + 1):
         for month, day in ((3, 31), (6, 30), (9, 30), (12, 31)):
