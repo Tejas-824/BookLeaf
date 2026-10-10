@@ -1,4 +1,5 @@
 import time
+import logging
 
 from google import genai
 from google.genai import types
@@ -7,10 +8,10 @@ from sqlalchemy.orm import Session
 from app.core.config import settings
 from app.models.ai_log import AILog
 
+log = logging.getLogger(__name__)
 
 class AIUnavailable(Exception):
     """Raised when the AI cannot be used (no key, timeout, rate limit, API down)."""
-
 
 _client: genai.Client | None = None
 
@@ -55,6 +56,10 @@ def call_llm(
             last_error = e
             if attempt == 0:
                 time.sleep(1)  # short wait, then retry once
+
+        except Exception as e:
+            last_error = e
+            log.warning("AI call failed (task=%s, attempt=%s): %s", task, attempt + 1, e)        
 
     _log(db, task, ticket_id, 0, 0, start, False, str(last_error)[:500])
     raise AIUnavailable(str(last_error)) from last_error
