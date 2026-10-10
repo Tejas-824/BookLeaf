@@ -57,7 +57,7 @@ export default function LoginPage() {
         </form>
 
         <div className="banner info" style={{ marginTop: "1rem", marginBottom: 0 }}>
-          <div className="small"><strong>Demo logins</strong> (click to fill)</div>
+          <div className="small"><strong>Demo accounts for reviewers</strong> (click to fill)</div>
           <div className="row" style={{ marginTop: ".4rem" }}>
             {DEMO.map((d) => (
               <button key={d.label} type="button" className="btn secondary sm"
