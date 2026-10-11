@@ -40,6 +40,19 @@ A web app where BookLeaf authors raise support tickets and the support team answ
 - **Safety:** the ticket text is treated as plain data, not as instructions, so an author cannot trick the AI. The AI is only given data of the author who wrote the ticket.
 - **AI never decides alone:** the original AI suggestion is stored next to the final choice, so we can see how often the admin changes it.
 
+## Extra things I added 
+
+- **No double tickets:** if an author clicks Submit twice, only one ticket is created.
+- **Limit on tickets:** an author can submit 10 tickets per hour. This stops spam and keeps the AI cost low.
+- **Backup when AI is down:** simple keyword rules still set the category and priority, so the ticket never sits unsorted.
+- **"AI is not sure" warning:** if the AI is unsure about a ticket, the admin sees a warning to check it carefully.
+- **Labels on every AI value:** the admin can see if a category came from the AI, from the keyword rules, or was set by a person.
+- **AI accuracy tracking:** the AI's first suggestion is saved separately, so the stats page can show how often the team agrees with it.
+- **AI usage log:** every AI call is saved with its time, size and result, so cost and failures are easy to check.
+- **Change history:** every status, category, priority, reply and note change is recorded with who did it and when.
+- **Overdue tickets stand out:** open tickets older than 48 hours get a badge, and critical ones get a red mark.
+- **Regenerate button:** if a draft is bad or the AI failed, the admin can ask for a new one.
+
 ## Security
 - The API key is only in the backend `.env` file. It is never in the frontend or in Git.
 - Passwords are hashed. Every route needs a login token.
