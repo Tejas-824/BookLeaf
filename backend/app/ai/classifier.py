@@ -26,7 +26,7 @@ def classify(db: Session, ticket: Ticket) -> dict:
     """Never raises. Falls back to keyword rules if AI fails."""
     limit = settings.max_ticket_chars_for_ai
     user_text = f"<ticket>\nSubject: {ticket.subject}\n{ticket.description[:limit]}\n</ticket>"
-    system = [{"type": "text", "text": CLASSIFIER_SYSTEM, "cache_control": {"type": "ephemeral"}}]
+    system = [{"type": "text", "text": CLASSIFIER_SYSTEM}]
     try:
         text = call_llm(
             db, task="classify", ticket_id=ticket.id, system=system, user_text=user_text, max_tokens=80

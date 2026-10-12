@@ -27,8 +27,7 @@ def generate_draft(db: Session, ticket: Ticket) -> str:
         "Write the reply to this ticket now."
     )
     system = [
-        # Fixed part, same for every call, so Anthropic can cache it
-        {"type": "text", "text": DRAFT_SYSTEM, "cache_control": {"type": "ephemeral"}},
+        {"type": "text", "text": DRAFT_SYSTEM},
         # Only the KB sections relevant to this category
         {"type": "text", "text": f"<policy>\n{get_kb_context(category)}\n</policy>"},
     ]
