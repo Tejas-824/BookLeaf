@@ -69,7 +69,7 @@ textarea { min-height: 140px; resize: vertical; }
 .banner.warn { background: #fffbeb; border-color: #fde68a; color: #92400e; }
 .banner.info { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
 
-/* Live dot (shows auto-refresh) */
+/* Live green dot (shows auto-refresh) */
 .live { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-right: .45rem; animation: pulse 2s infinite; }
 @keyframes pulse { 50% { opacity: .35; } }
 
