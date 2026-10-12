@@ -95,8 +95,6 @@ Open http://localhost:3000
 - Author: `priya.sharma@email.com` / `Author@123` (all 10 authors use this password)
 - Admin: `admin@bookleaf.com` / `Admin@123`
 
-To run the tests: `cd backend && pytest`
-
 ## API endpoints
 All routes need a login token, except login and health. Full interactive docs are at `/docs`.
 
